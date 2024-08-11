@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="be_id_reader_card_reader_view" model="ir.ui.view">
+        <field name="name">Install Card Reader</field>
+        <field name="model">card.reader.wizard</field>
+        <field name="arch" type="xml"> 
+            <form string="EPFC">
+                
+                <h1>Click bellow to download the card reader plugin.</h1>
+                <p> Once it is downloaded, install it.</p>
+                <p> Depending on your firewall you might have to disable it for the time of the installation.</p>
+                <footer>
+                    <button string="Windows" name="get_eid_installer" type="object" class="btn-primary" icon="fa-check-circle"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel" icon="fa-times"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="install_card_reader_action" model="ir.actions.act_window">
+        <field name="name">Install Card Reader</field>
+        <field name="res_model">card.reader.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>   
+        <field name="view_id" ref="be_id_reader_card_reader_view"/> 
+    </record>
+
+
+
+    <menuitem name="Card Reader"
+              id="card_reader_menu_root"
+              parent="settings_menu_root"
+              sequence="1"
+              action="install_card_reader_action"/>
+
+</odoo>

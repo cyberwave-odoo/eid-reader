@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem
+        id="eid_root_menu"
+        name="Eid Reader"
+        sequence="1"
+        />
+
+    <menuitem
+        id="settings_menu_root"
+        parent="eid_root_menu"
+        name="Install"
+        sequence="20"/>
+
+</odoo>
