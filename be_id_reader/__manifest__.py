@@ -48,5 +48,5 @@
     },
     'installable': True,
     'application': True,
-    'images': ['static/description/banner.png'],
+    'images': ['static/description/main_screenshot.png'],
 }
