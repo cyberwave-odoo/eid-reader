@@ -5,6 +5,7 @@
         id="eid_root_menu"
         name="Eid Reader"
         sequence="1"
+        web_icon="be_id_reader,static/description/odoo_icon.png"
         />
 
     <menuitem

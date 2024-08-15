@@ -79,7 +79,6 @@ class Users(http.Controller):
                     ('national_identification_number', '=', str(card_data["national_number"]))
                 ], limit=1)
                 
-                print(existing_partner)
                 if existing_partner:
                     del vals['company_id']
                     existing_partner.with_env(request.env(user=user)).write(vals)

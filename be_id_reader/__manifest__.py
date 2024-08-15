@@ -1,13 +1,14 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "be_id_reader",
+    'name': "Identity Card Reader : Belgium",
 
     'summary': """
-        Short (1 phrase/line) summary of the module's purpose, used as
-        subtitle on modules listing or apps.openerp.com""",
+        Create partners from Belgian identity card on Windows 
+        """,
 
     'description': """
-        Long description of module's purpose
+        Create Odoo partners (res.partners) from Belgian identity card and card reader on Windows clients.
+        The middleware is using a specific BSD licence that can be found in MIDDLEWARE_LICENSE.txt
     """,
 
     'author': "Cyberwave",
@@ -17,7 +18,11 @@
     # Check https://github.com/odoo/odoo/blob/16.0/odoo/addons/base/data/ir_module_category_data.xml
     # for the full list
     'category': 'Uncategorized',
-    'version': '0.1',
+    'version': '16.0.1.0.0',
+    
+    'price': 99,
+    'currency': 'EUR',
+    'support': 'jerome.dewandre.mail@gmail.com',
 
     # any module necessary for this one to work correctly
     'depends': ['base','bus'],
@@ -34,7 +39,7 @@
     'demo': [
         'demo/demo.xml',
     ],
-    'license': 'LGPL-3',
+    'license': 'OPL-1',
     'assets': {
         'web.assets_backend': [
             'be_id_reader/static/src/xml/eidConnector.xml',
@@ -43,4 +48,5 @@
     },
     'installable': True,
     'application': True,
+    'images': ['static/description/banner.png'],
 }

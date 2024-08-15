@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Identity Card Reader</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        h2 {
+            color: #555;
+        }
+        p {
+            line-height: 1.6;
+        }
+        .step {
+            margin-bottom: 20px;
+        }
+        .code {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        img {
+            margin: 10px ;
+            border: 2px solid #555;
+            max-width:750px;
+          }
+        .red-text { 
+            color: red; 
+        }
+    </style>
+</head>
+<body>
+    <h1>Identity Card Reader for Belgium</h1>
+    <p>This module allows you to import data from a <strong>Belgian</strong> identity card using a card reader running on a <strong class="red-text">Windows</strong> client into Odoo. 
+        This module takes care for you of the reading of the smart card data using PKCS11 standard (including the picture) and the creation of a new Odoo Partner (res.partner).  
+        Follow the steps below to set up and use the module from the client perspective.</p>
+
+    <div class="step">
+        <h2>Step 0: Install the Odoo module</h2>
+        <img src="install_app.png"  />
+     </div>
+    <div class="step">
+       <h2>Step 1: Install Middleware</h2>
+        <p>To connect the identity card reader holding an identity card to your Windows computer, you need to install the middleware provided by the Belgian government. Download the middleware directly from the Odoo instace.</p>
+    </div>
+    <img src="install_middleware_1_1.png"  />
+    <img src="install_middleware_2.png"  />
+
+    <p>If you encounter any issues during installation, you may need to add an exception to your firewall settings.</p>
+
+    <div class="step">
+        <h3>Step 1.1: Configure Firewall</h3>
+        <p>If your firewall is blocking the installation or operation of the middleware, follow these steps to add an exception:</p>
+        <ol>
+            <li>Open the Control Panel and go to <strong>System and Security</strong>.</li>
+            <li>Click on <strong>Windows Defender Firewall</strong>.</li>
+            <li>Select <strong>Allow an app or feature through Windows Defender Firewall</strong>.</li>
+            <li>Click on <strong>Change settings</strong> and then <strong>Allow another app...</strong>.</li>
+            <li>Browse to the location of the middleware executable "eid_reader_installer.exe" file and add it to the list of allowed apps.</li>
+        </ol>
+        <p>If you are using an extra malware analyser, you might also need to add a firewall exception to it.</p>
+    </div>
+
+    <div class="step">
+        <h2>Step 2: Use the Odoo Module</h2>
+        <p>Once the middleware is installed and configured, you can the Odoo module to import data from the identity card reader. The data that will be imported includes:</p>
+        <ul>
+            <li>Address</li>
+            <li>Gender</li>
+            <li>Date of Birth</li>
+            <li>Place of Birth</li>
+            <li>Nationality</li>
+            <li>National Identification Number</li>
+        </ul>
+        <p>To import the data, follow these steps:</p>
+        <ol>
+            <li>Open the Odoo application and navigate to the Eid Reader module.</li>
+            <li>Connect the identity card reader to your computer.</li>
+            <li>Click on the <strong>Card Reader Create</strong> button in the module interface.</li>
+            <img src="install_middleware_1_2.png"  />
+            <li>You will be redirected either to the newly created partner, or the existing partner (based on the nationnal registration number) updated.</li>
+            <img src="outcome.png" />
+        </ol>
+    </div>
+
+    <div class="step">
+        <h2>Troubleshooting</h2>
+        <p>If you encounter any issues, ensure that:</p>
+        <ul>
+            <li>The middleware is properly installed and running.</li>
+            <li>The identity card reader is connected to your computer.</li>
+            <li>Your firewall settings are not blocking the middleware.</li>
+        </ul>
+    </div>
+
+    <div class="step">
+      <h2>Pro Tips</h2>
+      <p>You are dealing here with sensitive data:</p>
+      <ul>
+          <li>When using HTTP, data is sent between the client (middleware) and the server (Odoo instance) in plain text. This means anyone intercepting the data (e.g., through a man-in-the-middle attack) can read the ID card information. Make sure to use the best security practices (HTTPS, TLS, VPN, ...) to ensure data privacy.</li>
+          <li>The collection and use of the National Registration Number (NRN) in Belgium is strictly regulated by law to protect individuals' privacy and personal data. The use and collection of the NRN are governed by the Law of August 8, 1983 on the National Register of Natural Persons and its subsequent amendments.</li>
+      </ul>
+    </div>
+    <h2>We hope this module will help you ;)</h2>
+</body>
+</html>
+
