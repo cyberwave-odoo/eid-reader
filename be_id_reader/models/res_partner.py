@@ -31,8 +31,8 @@ class ResPartner(models.Model):
     @api.model
     def get_import_templates(self):
         return [{
-            'label': _('Import Template for Patient'),
-            'template': '/be_id_reader/static/files/res_partner.csv'
+            'label': _('Import Template for Partners'),
+            'template': '/be_id_reader/static/files/res_partner.xlsx'
         }]
         
         
