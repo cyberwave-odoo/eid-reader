@@ -6,7 +6,6 @@ from datetime import datetime
 import logging
 from .month import fix_date
 import base64
-from odoo.exceptions import ValidationError
 
 _logger = logging.getLogger(__name__)
 

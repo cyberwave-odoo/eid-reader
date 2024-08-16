@@ -17,6 +17,7 @@ export class EidController extends ListController {
       
       this.busService = this.env.services.bus_service
       this.channel = "user-channel"
+      this.notifiedSessions = new Set();
       
    }
 
@@ -29,7 +30,8 @@ export class EidController extends ListController {
           
       const userPaload = payload.map(notification => notification.payload.uid);
 
-      if(userPaload == session.uid) {
+      if(userPaload == session.uid && !this.notifiedSessions.has(session.uid)) {
+         this.notifiedSessions.add(session.uid);
          const successPayloads = payload.map(notification => notification.payload.success);    
          successPayloads.forEach(success => {
             if (success) {
@@ -37,13 +39,13 @@ export class EidController extends ListController {
                const partnerPayload = payload.map(notification => notification.payload.partner_id);                
                this.openPartnerFormView(partnerPayload[0]);
                
-               this.notification.add(this.env._t("User created"),
-               {title: this.env._t("Creation Success"), type: "success"});
+               this.notification.add("User created",
+               {title: "Creation Success", type: "success"});
             
                
             } else {
                const message = payload.map(notification => notification.payload.message).join(', '); 
-               this.notification.add(this.env._t(`User not created. Details: ${message}`),{title: this.env._t("Creation Error"), type: "danger"});
+               this.notification.add(`User not created. Details: ${message}`,{title: "Creation Error", type: "danger"});
             }
             
          });
@@ -67,7 +69,7 @@ export class EidController extends ListController {
       var platform = window.navigator.userAgent.toLowerCase()
       if (platform.match("windows") == undefined) {
          console.log("Platform not yet supported");
-         this.notification.add(this.env._t("Only Windows is supported yet"), {title: "OS Error", type: "danger"});
+         this.notification.add("Only Windows is supported yet", {title: "OS Error", type: "danger"});
 
       }
       else {
@@ -87,7 +89,7 @@ export class EidController extends ListController {
          this.busService.addEventListener("notification", this.onMessage.bind(this),{ passive: true });
          window.open(custom_scheme, '_blank');
 
-         this.notification.add(this.env._t("Request in progress"),{title: "Processing", type: "warning"});
+         this.notification.add("Request in progress",{title: "Processing", type: "warning"});
 
       } 
    }
