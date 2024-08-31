@@ -12,15 +12,15 @@
     """,
 
     'author': "Cyberwave",
-    'website': "https://www.cyberwave.be",
+    'website': "https://gitlab.com/jer.dewandre/id-reader",
 
     # Categories can be used to filter modules in modules listing
     # Check https://github.com/odoo/odoo/blob/16.0/odoo/addons/base/data/ir_module_category_data.xml
     # for the full list
     'category': 'Uncategorized',
-    'version': '17.0.1.0.0',
+    'version': '17.0.2.0.0',
     
-    'price': 99,
+    'price': 0,
     'currency': 'EUR',
     'support': 'jerome.dewandre.mail@gmail.com',
 
@@ -39,7 +39,7 @@
     'demo': [
         'demo/demo.xml',
     ],
-    'license': 'OPL-1',
+    'license': 'LGPL-3',
     'assets': {
         'web.assets_backend': [
             'be_id_reader/static/src/xml/eidConnector.xml',
