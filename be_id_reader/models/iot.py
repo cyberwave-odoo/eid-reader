@@ -13,11 +13,12 @@ class resPartner(models.Model):
         return self.iot_access_key   
     
     def iot_access_key_valid(self, access_key):
+        validity_time = 30
         if not self.iot_access_key or not self.iot_access_key_timestamp:
             return False
         current_time = fields.Datetime.now()
         
-        if self.iot_access_key == access_key and (current_time - self.iot_access_key_timestamp).total_seconds() <= 30:
+        if self.iot_access_key == access_key and (current_time - self.iot_access_key_timestamp).total_seconds() <= validity_time:
             
             return True
         return False

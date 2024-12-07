@@ -21,9 +21,13 @@ class Users(http.Controller):
         return session
 
     def trigger_bus(self, user, data):
-        data['uid'] = user.id
-        request.env['bus.bus'].with_env(request.env(user=user))._sendone(channel='user-channel',notification_type="notification", message=data 
-                    ) 
+        params = {
+            'uid': user.id,
+            'type': "success" if data["success"] else "danger",
+            'data' : data
+        }
+        user._bus_send('user-channel', params)
+        
     # TODO manage exeptions : no card, already niss for this user, ...
     @http.route('/eid-user/create', auth='public', methods=['POST'], type="json", csrf=False)
     def eid_user_create(self, **kw):
@@ -31,7 +35,6 @@ class Users(http.Controller):
         _logger.info(f"Request Params: {request.params}")
         card_data = json.loads(request.params['card_data'])
         iot_access_key = request.params['key']
-        
         user = request.env['res.users'].sudo().browse(int(request.params['uid']))
         
         if not user.iot_access_key_valid(iot_access_key):
