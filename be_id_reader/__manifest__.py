@@ -20,7 +20,7 @@
     'category': 'Uncategorized',
     'version': '18.0.1.0.0',
     
-    'price': 1000,
+    'price': 499.99,
     'currency': 'EUR',
     'support': 'jerome.dewandre.mail@gmail.com',
 
