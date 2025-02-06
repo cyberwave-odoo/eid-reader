@@ -39,7 +39,7 @@
     'demo': [
         'demo/demo.xml',
     ],
-    'license': 'OPL',
+    'license': 'OPL-1',
     'assets': {
         'web.assets_backend': [
             'be_id_reader/static/src/xml/eidConnector.xml',
