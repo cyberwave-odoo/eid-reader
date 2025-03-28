@@ -20,8 +20,6 @@
     'category': 'Uncategorized',
     'version': '18.0.1.0.0',
     
-    'price': 499.99,
-    'currency': 'EUR',
     'support': 'jerome.dewandre.mail@gmail.com',
 
     # any module necessary for this one to work correctly
@@ -39,7 +37,7 @@
     'demo': [
         'demo/demo.xml',
     ],
-    'license': 'OPL-1',
+    'license': 'AGPL-3',
     'assets': {
         'web.assets_backend': [
             'be_id_reader/static/src/xml/eidConnector.xml',
